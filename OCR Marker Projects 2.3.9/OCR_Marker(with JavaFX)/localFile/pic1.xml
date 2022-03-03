@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<rectArcs>
+  <rectArc>
+    <startX>0.061232765612327704</startX>
+    <startY>0.37064071370640717</startY>
+    <endX>0.2607461476074614</endX>
+    <endY>0.4517437145174371</endY>
+    <OCR></OCR>
+    <RGB_R>0.0</RGB_R>
+    <RGB_G>0.0</RGB_G>
+    <RGB_B>0.0</RGB_B>
+  </rectArc>
+  <rectArc>
+    <startX>0.42944038929440387</startX>
+    <startY>0.15955472726958989</startY>
+    <endX>0.7798053527980535</endX>
+    <endY>0.33657745336577455</endY>
+    <OCR></OCR>
+    <RGB_R>0.0</RGB_R>
+    <RGB_G>0.0</RGB_G>
+    <RGB_B>0.0</RGB_B>
+  </rectArc>
+  <rectArc>
+    <startX>0.12773722627737227</startX>
+    <startY>0.5101378751013788</startY>
+    <endX>0.3288726682887266</endX>
+    <endY>0.635036496350365</endY>
+    <OCR></OCR>
+    <RGB_R>0.0</RGB_R>
+    <RGB_G>0.0</RGB_G>
+    <RGB_B>0.0</RGB_B>
+  </rectArc>
+  <rectArc>
+    <startX>0.5267639902676399</startX>
+    <startY>0.44038929440389296</startY>
+    <endX>0.854420113544201</endX>
+    <endY>0.545823195458232</endY>
+    <OCR></OCR>
+    <RGB_R>0.3019607961177826</RGB_R>
+    <RGB_G>0.501960813999176</RGB_G>
+    <RGB_B>0.501960813999176</RGB_B>
+  </rectArc>
+  <rectArc>
+    <startX>0.0952960259529603</startX>
+    <startY>0.10137875101378752</startY>
+    <endX>0.3532035685320356</endX>
+    <endY>0.20194647201946472</endY>
+    <OCR></OCR>
+    <RGB_R>0.0</RGB_R>
+    <RGB_G>0.0</RGB_G>
+    <RGB_B>0.0</RGB_B>
+  </rectArc>
+</rectArcs>

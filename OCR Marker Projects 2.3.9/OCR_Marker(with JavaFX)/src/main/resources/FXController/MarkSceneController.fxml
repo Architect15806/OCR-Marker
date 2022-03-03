@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" maxHeight="1080.0" maxWidth="1920.0" minHeight="850.0" minWidth="1500.0" prefHeight="850.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.MarkSceneController">
+   <children>
+      <MenuBar fx:id="myMenuBar">
+        <menus>
+          <Menu mnemonicParsing="false" text="文件">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#OpenDirFunc" text="打开目录" />
+                  <MenuItem mnemonicParsing="false" onAction="#SaveFunc" text="保存" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="编辑">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="帮助">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#HelpFunc" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox fx:id="aboveHBox" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox fx:id="leftVbox" prefWidth="350.0">
+               <children>
+                  <SplitPane minHeight="200.0" minWidth="350.4" prefHeight="200.0" prefWidth="350.0" VBox.vgrow="NEVER">
+                     <items>
+                      <AnchorPane fx:id="zoomerAnchorPane" minHeight="200.0" minWidth="350.4" prefHeight="200.0" prefWidth="350.0">
+                           <children>
+                              <ImageView fx:id="zoomerImageView" fitHeight="200.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+                  <Slider fx:id="zoomerSlider" blockIncrement="1.0" majorTickUnit="4.0" max="20.0" min="1.0" nodeOrientation="LEFT_TO_RIGHT" showTickLabels="true" showTickMarks="true" snapToTicks="true" style="-fx-background-color: antiquewhite;" value="5.0" VBox.vgrow="NEVER" />
+                  <Accordion VBox.vgrow="ALWAYS">
+                    <panes>
+                        <TitledPane animated="false" text="全部图片">
+                           <content>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="allPicListView" BorderPane.alignment="CENTER" />
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </TitledPane>
+                      <TitledPane animated="false" text="已标注图片">
+                        <content>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="donePicListView" prefHeight="445.6" prefWidth="348.8" BorderPane.alignment="CENTER" />
+                                 </center>
+                              </BorderPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="未标注图片">
+                        <content>
+                              <BorderPane>
+                                 <center>
+                                    <ListView fx:id="undonePicListView" prefHeight="445.6" prefWidth="348.8" BorderPane.alignment="CENTER" />
+                                 </center>
+                              </BorderPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <SplitPane fx:id="midSpiltPane" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" HBox.hgrow="ALWAYS">
+               <items>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+                          <items>
+                            <AnchorPane fx:id="markAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#mClicked" onMouseDragged="#mDragged" onMouseMoved="#mMoved" onMousePressed="#mPressed" onMouseReleased="#mRelease" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <ImageView fx:id="markImageView" fitHeight="1080.0" fitWidth="1920.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                          <items>
+                              <BorderPane prefHeight="200.0" style="-fx-background-color: antiquewhite;">
+                                 <center>
+                                    <TextArea fx:id="wordTextArea" prefHeight="189.0" prefWidth="743.0" style="-fx-background-color: #FFD306;" BorderPane.alignment="CENTER" />
+                                 </center>
+                                 <top>
+                                    <Label fx:id="editArea" text="文本标注区" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </top>
+                              </BorderPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+            <BorderPane minWidth="400.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: antiquewhite;" HBox.hgrow="NEVER">
+               <center>
+                  <ListView fx:id="wordListView" prefHeight="714.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+               </center>
+               <bottom>
+                  <SplitPane maxHeight="250.0" maxWidth="1.7976931348623157E308" minHeight="250.0" prefHeight="250.0" BorderPane.alignment="CENTER">
+                     <items>
+                        <BorderPane prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: antiquewhite;">
+                           <top>
+                              <AnchorPane prefHeight="35.0" prefWidth="398.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox layoutY="5.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="TOP" prefHeight="26.0" prefWidth="118.0" text="选择框颜色" textOverrun="CLIP">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ColorPicker fx:id="colorPicker" onAction="#ColorSetFunc" prefHeight="26.0" prefWidth="230.0">
+                                             <value>
+                                                <Color />
+                                             </value>
+                                          </ColorPicker>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <center>
+                              <AnchorPane prefHeight="214.0" prefWidth="417.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a71f70c" height="89.0" layoutX="141.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="176.0" />
+                                    <Button layoutX="181.0" layoutY="58.0" mnemonicParsing="false" onAction="#UDFunc" prefHeight="23.0" prefWidth="100.0" text="▾" />
+                                    <Button layoutX="181.0" layoutY="26.0" mnemonicParsing="false" onAction="#UUFunc" prefHeight="23.0" prefWidth="100.0" text="▴" />
+                                    <Button layoutX="148.0" layoutY="64.0" mnemonicParsing="false" onAction="#LRFunc" prefHeight="70.0" prefWidth="23.0" text="▸" />
+                                    <Button layoutX="322.0" layoutY="64.0" mnemonicParsing="false" onAction="#RRFunc" prefHeight="70.0" prefWidth="23.0" text="▸" />
+                                    <Button layoutX="181.0" layoutY="114.0" mnemonicParsing="false" onAction="#DUFunc" prefHeight="23.0" prefWidth="100.0" text="▴" />
+                                    <Button layoutX="181.0" layoutY="146.0" mnemonicParsing="false" onAction="#DDFunc" prefHeight="23.0" prefWidth="100.0" text="▾" />
+                                    <Button layoutX="113.0" layoutY="64.0" mnemonicParsing="false" onAction="#LLFunc" prefHeight="70.0" prefWidth="23.0" text="◂" />
+                                    <Button layoutX="288.0" layoutY="64.0" mnemonicParsing="false" onAction="#RLFunc" prefHeight="70.0" prefWidth="23.0" text="◂" />
+                                    <Label layoutX="24.0" layoutY="15.0" text="选择框微调">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="senseSlider" layoutX="24.0" layoutY="169.0" majorTickUnit="2.0" max="8.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" />
+                                    <Label fx:id="labelSence" layoutX="28.0" layoutY="150.0" text="灵敏度">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <RadioButton fx:id="leftModeRadio" layoutX="89.0" layoutY="90.0" mnemonicParsing="false">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="DTG" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="upModeRadio" layoutX="223.0" layoutY="7.0" mnemonicParsing="false" selected="true" toggleGroup="$DTG" />
+                                    <RadioButton fx:id="downModeRadio" layoutX="224.0" layoutY="175.0" mnemonicParsing="false" toggleGroup="$DTG" />
+                                    <RadioButton fx:id="rightModeRadio" layoutX="354.0" layoutY="92.0" mnemonicParsing="false" toggleGroup="$DTG" />
+                                 </children>
+                              </AnchorPane>
+                           </center>
+                        </BorderPane>
+                     </items>
+                  </SplitPane>
+               </bottom>
+               <top>
+                  <Label fx:id="drawInIndex" text="标注目录" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </top>
+            </BorderPane>
+         </children>
+      </HBox>
+      <SplitPane prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: antiquewhite;" VBox.vgrow="NEVER">
+         <items>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" scaleX="0.9">
+              <buttons>
+                  <RadioButton fx:id="rectModeRadio" mnemonicParsing="false" selected="true" text="框选模式">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="TG" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="editModeRadio" mnemonicParsing="false" text="编辑模式" toggleGroup="$TG" />
+                  <RadioButton fx:id="viewModeRadio" mnemonicParsing="false" text="查看模式" toggleGroup="$TG" />
+                  <RadioButton fx:id="selectModeRadio" mnemonicParsing="false" text="选择模式" toggleGroup="$TG" />
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#EditFunc" style="-fx-border-color: #BEBEBE; -fx-border-width: 4; -fx-border-radius: 12; -fx-background-radius: 16; -fx-background-color: #FFF4C1; -fx-font-weight: bold;" text="编辑" />
+                  <Button fx:id="finishButton" mnemonicParsing="false" onAction="#FinishFunc" style="-fx-border-color: #BEBEBE; -fx-border-width: 4; -fx-border-radius: 12; -fx-background-radius: 16; -fx-background-color: #FFF4C1; -fx-font-weight: bold;" text="完成" />
+                <Button mnemonicParsing="false" onAction="#ClearFunc" style="-fx-border-color: #BEBEBE; -fx-border-width: 4; -fx-border-radius: 12; -fx-background-radius: 16; -fx-background-color: #FFF4C1  #FFF4C1; -fx-font-weight: bold;" text="清空" />
+                  <Button mnemonicParsing="false" onAction="#DeleteFunc" style="-fx-border-color: #BEBEBE; -fx-border-width: 4; -fx-border-radius: 12; -fx-background-radius: 16; -fx-background-color: #FFF4C1; -fx-font-weight: bold;" text="删除" />
+              </buttons>
+            </ButtonBar>
+         </items>
+      </SplitPane>
+      <BorderPane minHeight="20.0" prefHeight="20.0" prefWidth="200.0" VBox.vgrow="NEVER">
+         <right>
+            <Label fx:id="conditionLabel" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="229.0" scaleX="0.9" text="正在准备" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+         </right>
+      </BorderPane>
+   </children>
+</VBox>
